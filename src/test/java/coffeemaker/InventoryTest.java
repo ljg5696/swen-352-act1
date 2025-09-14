@@ -128,5 +128,61 @@ public class InventoryTest {
         // validate the results
         assertEquals(msg, exception.getMessage());
     }
+
+    @Test
+    @DisplayName("Test Case: addCoffee('badentry')")
+    void addCoffeeExceptionTestNonInteger() {
+        // setup
+        String msg = "Units of coffee must be a positive integer";
+        
+        // execute test method
+        Exception exception = assertThrows(InventoryException.class,
+            () -> inventoryCuT.addCoffee("badentry"));
+
+        // validate the results
+        assertEquals(msg, exception.getMessage());
+    }
+    
+    @Test
+    @DisplayName("Test Case: addMilk('badentry')")
+    void addMilkExceptionTestNonInteger() {
+        // setup
+        String msg = "Units of milk must be a positive integer";
+        
+        // execute test method
+        Exception exception = assertThrows(InventoryException.class,
+            () -> inventoryCuT.addMilk("badentry"));
+
+        // validate the results
+        assertEquals(msg, exception.getMessage());
+    }
+
+    @Test
+    @DisplayName("Test Case: addSugar('badentry')")
+    void addSugarExceptionTestNonInteger() {
+        // setup
+        String msg = "Units of sugar must be a positive integer";
+        
+        // execute test method
+        Exception exception = assertThrows(InventoryException.class,
+            () -> inventoryCuT.addSugar("badentry"));
+
+        // validate the results
+        assertEquals(msg, exception.getMessage());
+    }
+
+    @Test
+    @DisplayName("Test Case: addChocolate('badentry')")
+    void addChocolateExceptionTestNonInteger() {
+        // setup
+        String msg = "Units of chocolate must be a positive integer";
+        
+        // execute test method
+        Exception exception = assertThrows(InventoryException.class,
+            () -> inventoryCuT.addChocolate("badentry"));
+
+        // validate the results
+        assertEquals(msg, exception.getMessage());
+    }
     
 }
