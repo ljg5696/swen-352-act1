@@ -184,5 +184,93 @@ public class InventoryTest {
         // validate the results
         assertEquals(msg, exception.getMessage());
     }
+
+    @Test
+    @DisplayName("Test Case: setCoffee(10)")
+    void setCoffeePositive() {
+        // execute test method
+        inventoryCuT.setCoffee(10);
+        int result = inventoryCuT.getCoffee();
+
+        // validate the results
+        assertEquals(10, result);
+    }
+
+    @Test
+    @DisplayName("Test Case: setCoffee(-10)")
+    void setCoffeeNegative() {
+        // execute test method
+        inventoryCuT.setCoffee(-10);
+        int result = inventoryCuT.getCoffee();
+
+        // validate the results
+        assertEquals(15, result);
+    }
+
+    @Test
+    @DisplayName("Test Case: setMilk(10)")
+    void setMilkPositive() {
+        // execute test method
+        inventoryCuT.setMilk(10);
+        int result = inventoryCuT.getMilk();
+
+        // validate the results
+        assertEquals(10, result);
+    }
+
+    @Test
+    @DisplayName("Test Case: setMilk(-10)")
+    void setMilkNegative() {
+        // execute test method
+        inventoryCuT.setMilk(-10);
+        int result = inventoryCuT.getMilk();
+
+        // validate the results
+        assertEquals(15, result);
+    }
+
+    @Test
+    @DisplayName("Test Case: setSugar(10)")
+    void setSugarPositive() {
+        // execute test method
+        inventoryCuT.setSugar(10);
+        int result = inventoryCuT.getSugar();
+
+        // validate the results
+        assertEquals(10, result);
+    }
+
+    @Test
+    @DisplayName("Test Case: setSugar(-10)")
+    void setSugarNegative() {
+        // execute test method
+        inventoryCuT.setSugar(-10);
+        int result = inventoryCuT.getSugar();
+
+        // validate the results
+        assertEquals(15, result);
+    }
+
+    @Test
+    @DisplayName("Test Case: setChocolate(10)")
+    void setChocolatePositive() {
+        // execute test method
+        inventoryCuT.setChocolate(10);
+        int result = inventoryCuT.getChocolate();
+
+        // validate the results
+        assertEquals(10, result);
+    }
+
+    @Test
+    @DisplayName("Test Case: setChocolate(-10)")
+    void setChocolateNegative() {
+        // execute test method
+        inventoryCuT.setChocolate(-10);
+        int result = inventoryCuT.getChocolate();
+
+        // validate the results
+        assertEquals(15, result);
+    }
     
 }
