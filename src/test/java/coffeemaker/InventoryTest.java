@@ -7,6 +7,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.AfterEach;
 
 import coffeemaker.domain.Inventory;
+import coffeemaker.domain.Recipe;
 import coffeemaker.exceptions.InventoryException;
 
 /**
@@ -271,6 +272,52 @@ public class InventoryTest {
 
         // validate the results
         assertEquals(15, result);
+    }
+
+    @Test
+    @DisplayName("Test Case: useIngredients() with enough stock")
+    void useIngredientsTrue() {
+        // setup
+        Recipe testRecipe = new Recipe();
+        testRecipe.setAmtCoffee("5");
+        testRecipe.setAmtMilk("5");
+        testRecipe.setAmtSugar("5");
+        testRecipe.setAmtChocolate("5");
+
+        // execute test method
+        boolean result = inventoryCuT.useIngredients(testRecipe);
+
+        // validate the results
+        assertAll("Group assertions"
+            , () -> assertEquals(true, result, "result should be true")
+            , () -> assertEquals(10, inventoryCuT.getCoffee(), "coffee should be 10")
+            , () -> assertEquals(10, inventoryCuT.getMilk(), "milk should be 10")
+            , () -> assertEquals(10, inventoryCuT.getSugar(), "sugar should be 10")
+            , () -> assertEquals(10, inventoryCuT.getChocolate(), "chocolate should be 10")
+        );
+    }
+
+    @Test
+    @DisplayName("Test Case: useIngredients() without enough stock")
+    void useIngredientsFalse() {
+        // setup
+        Recipe testRecipe = new Recipe();
+        testRecipe.setAmtCoffee("25");
+        testRecipe.setAmtMilk("25");
+        testRecipe.setAmtSugar("25");
+        testRecipe.setAmtChocolate("25");
+
+        // execute test method
+        boolean result = inventoryCuT.useIngredients(testRecipe);
+
+        // validate the results
+        assertAll("Group assertions"
+            , () -> assertEquals(false, result, "result should be false")
+            , () -> assertEquals(15, inventoryCuT.getCoffee(), "coffee should be 15")
+            , () -> assertEquals(15, inventoryCuT.getMilk(), "milk should be 15")
+            , () -> assertEquals(15, inventoryCuT.getSugar(), "sugar should be 15")
+            , () -> assertEquals(15, inventoryCuT.getChocolate(), "chocolate should be 15")
+        );
     }
     
 }
