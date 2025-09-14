@@ -7,6 +7,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.AfterEach;
 
 import coffeemaker.domain.Inventory;
+import coffeemaker.exceptions.InventoryException;
 
 /**
  * Unit test class for the Inventory component
@@ -72,4 +73,60 @@ public class InventoryTest {
         assertEquals(20, result);
     }
 
+    @Test
+    @DisplayName("Test Case: addCoffee('-5')")
+    void addCoffeeExceptionTest() {
+        // setup
+        String msg = "Units of coffee must be a positive integer";
+        
+        // execute test method
+        Exception exception = assertThrows(InventoryException.class,
+            () -> inventoryCuT.addCoffee("-5"));
+
+        // validate the results
+        assertEquals(msg, exception.getMessage());
+    }
+    
+    @Test
+    @DisplayName("Test Case: addMilk('-5')")
+    void addMilkExceptionTest() {
+        // setup
+        String msg = "Units of milk must be a positive integer";
+        
+        // execute test method
+        Exception exception = assertThrows(InventoryException.class,
+            () -> inventoryCuT.addMilk("-5"));
+
+        // validate the results
+        assertEquals(msg, exception.getMessage());
+    }
+
+    @Test
+    @DisplayName("Test Case: addSugar('-5')")
+    void addSugarExceptionTest() {
+        // setup
+        String msg = "Units of sugar must be a positive integer";
+        
+        // execute test method
+        Exception exception = assertThrows(InventoryException.class,
+            () -> inventoryCuT.addSugar("-5"));
+
+        // validate the results
+        assertEquals(msg, exception.getMessage());
+    }
+
+    @Test
+    @DisplayName("Test Case: addChocolate('-5')")
+    void addChocolateExceptionTest() {
+        // setup
+        String msg = "Units of chocolate must be a positive integer";
+        
+        // execute test method
+        Exception exception = assertThrows(InventoryException.class,
+            () -> inventoryCuT.addChocolate("-5"));
+
+        // validate the results
+        assertEquals(msg, exception.getMessage());
+    }
+    
 }
