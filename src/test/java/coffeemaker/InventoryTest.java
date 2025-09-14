@@ -31,6 +31,17 @@ public class InventoryTest {
     }
 
     @Test
+    @DisplayName("Test Case: Inventory Constructor")
+    void testInventoryConstructor() {
+        assertAll("Group assertions"
+            , () -> assertEquals(15, inventoryCuT.getCoffee(), "coffee should be 15")
+            , () -> assertEquals(15, inventoryCuT.getMilk(), "milk should be 15")
+            , () -> assertEquals(15, inventoryCuT.getSugar(), "sugar should be 15")
+            , () -> assertEquals(15, inventoryCuT.getChocolate(), "chocolate should be 15")
+        );
+    }
+
+    @Test
     @DisplayName("Test Case: addCoffee('5')")
     void addCoffee1() {
         // execute test method
