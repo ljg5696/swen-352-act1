@@ -220,6 +220,17 @@ public class InventoryTest {
     }
 
     @Test
+    @DisplayName("Test Case: setCoffee(0)")
+    void setCoffeeZero() {
+        // execute test method
+        inventoryCuT.setCoffee(0);
+        int result = inventoryCuT.getCoffee();
+
+        // validate the results
+        assertEquals(0, result);
+    }
+
+    @Test
     @DisplayName("Test Case: setMilk(10)")
     void setMilkPositive() {
         // execute test method
@@ -228,6 +239,17 @@ public class InventoryTest {
 
         // validate the results
         assertEquals(10, result);
+    }
+
+    @Test
+    @DisplayName("Test Case: setMilk(0)")
+    void setMilkZero() {
+        // execute test method
+        inventoryCuT.setMilk(0);
+        int result = inventoryCuT.getMilk();
+
+        // validate the results
+        assertEquals(0, result);
     }
 
     @Test
@@ -264,6 +286,17 @@ public class InventoryTest {
     }
 
     @Test
+    @DisplayName("Test Case: setSugar(0)")
+    void setSugarZero() {
+        // execute test method
+        inventoryCuT.setSugar(0);
+        int result = inventoryCuT.getSugar();
+
+        // validate the results
+        assertEquals(0, result);
+    }
+
+    @Test
     @DisplayName("Test Case: setChocolate(10)")
     void setChocolatePositive() {
         // execute test method
@@ -283,6 +316,17 @@ public class InventoryTest {
 
         // validate the results
         assertEquals(15, result);
+    }
+
+    @Test
+    @DisplayName("Test Case: setChocolate(0)")
+    void setChocolateZero() {
+        // execute test method
+        inventoryCuT.setChocolate(0);
+        int result = inventoryCuT.getChocolate();
+
+        // validate the results
+        assertEquals(0, result);
     }
 
     @Test
@@ -317,6 +361,121 @@ public class InventoryTest {
         testRecipe.setAmtMilk("25");
         testRecipe.setAmtSugar("25");
         testRecipe.setAmtChocolate("25");
+
+        // execute test method
+        boolean result = inventoryCuT.useIngredients(testRecipe);
+
+        // validate the results
+        assertAll("Group assertions"
+            , () -> assertEquals(false, result, "result should be false")
+            , () -> assertEquals(15, inventoryCuT.getCoffee(), "coffee should be 15")
+            , () -> assertEquals(15, inventoryCuT.getMilk(), "milk should be 15")
+            , () -> assertEquals(15, inventoryCuT.getSugar(), "sugar should be 15")
+            , () -> assertEquals(15, inventoryCuT.getChocolate(), "chocolate should be 15")
+        );
+    }
+
+    @Test
+    @DisplayName("Test Case: useIngredients() using all ingredients")
+    void useIngredientsAll() {
+        // setup
+        Recipe testRecipe = new Recipe();
+        testRecipe.setAmtCoffee("15");
+        testRecipe.setAmtMilk("15");
+        testRecipe.setAmtSugar("15");
+        testRecipe.setAmtChocolate("15");
+
+        // execute test method
+        boolean result = inventoryCuT.useIngredients(testRecipe);
+
+        // validate the results
+        assertAll("Group assertions"
+            , () -> assertEquals(true, result, "result should be true")
+            , () -> assertEquals(0, inventoryCuT.getCoffee(), "coffee should be 0")
+            , () -> assertEquals(0, inventoryCuT.getMilk(), "milk should be 0")
+            , () -> assertEquals(0, inventoryCuT.getSugar(), "sugar should be 0")
+            , () -> assertEquals(0, inventoryCuT.getChocolate(), "chocolate should be 0")
+        );
+    }
+
+    @Test
+    @DisplayName("Test Case: useIngredients() without enough coffee")
+    void useIngredientsFalseCoffee() {
+        // setup
+        Recipe testRecipe = new Recipe();
+        testRecipe.setAmtCoffee("16");
+        testRecipe.setAmtMilk("15");
+        testRecipe.setAmtSugar("15");
+        testRecipe.setAmtChocolate("15");
+
+        // execute test method
+        boolean result = inventoryCuT.useIngredients(testRecipe);
+
+        // validate the results
+        assertAll("Group assertions"
+            , () -> assertEquals(false, result, "result should be false")
+            , () -> assertEquals(15, inventoryCuT.getCoffee(), "coffee should be 15")
+            , () -> assertEquals(15, inventoryCuT.getMilk(), "milk should be 15")
+            , () -> assertEquals(15, inventoryCuT.getSugar(), "sugar should be 15")
+            , () -> assertEquals(15, inventoryCuT.getChocolate(), "chocolate should be 15")
+        );
+    }
+
+    @Test
+    @DisplayName("Test Case: useIngredients() without enough milk")
+    void useIngredientsFalseMilk() {
+        // setup
+        Recipe testRecipe = new Recipe();
+        testRecipe.setAmtCoffee("15");
+        testRecipe.setAmtMilk("16");
+        testRecipe.setAmtSugar("15");
+        testRecipe.setAmtChocolate("15");
+
+        // execute test method
+        boolean result = inventoryCuT.useIngredients(testRecipe);
+
+        // validate the results
+        assertAll("Group assertions"
+            , () -> assertEquals(false, result, "result should be false")
+            , () -> assertEquals(15, inventoryCuT.getCoffee(), "coffee should be 15")
+            , () -> assertEquals(15, inventoryCuT.getMilk(), "milk should be 15")
+            , () -> assertEquals(15, inventoryCuT.getSugar(), "sugar should be 15")
+            , () -> assertEquals(15, inventoryCuT.getChocolate(), "chocolate should be 15")
+        );
+    }
+
+    @Test
+    @DisplayName("Test Case: useIngredients() without enough sugar")
+    void useIngredientsFalseSugar() {
+        // setup
+        Recipe testRecipe = new Recipe();
+        testRecipe.setAmtCoffee("15");
+        testRecipe.setAmtMilk("15");
+        testRecipe.setAmtSugar("16");
+        testRecipe.setAmtChocolate("15");
+
+        // execute test method
+        boolean result = inventoryCuT.useIngredients(testRecipe);
+
+        // validate the results
+        assertAll("Group assertions"
+            , () -> assertEquals(false, result, "result should be false")
+            , () -> assertEquals(15, inventoryCuT.getCoffee(), "coffee should be 15")
+            , () -> assertEquals(15, inventoryCuT.getMilk(), "milk should be 15")
+            , () -> assertEquals(15, inventoryCuT.getSugar(), "sugar should be 15")
+            , () -> assertEquals(15, inventoryCuT.getChocolate(), "chocolate should be 15")
+        );
+    }
+
+    @Test
+    @DisplayName("Test Case: useIngredients() without enough chocolate")
+    void useIngredientsFalseChocolate() {
+        // setup
+        Recipe testRecipe = new Recipe();
+        testRecipe.setAmtCoffee("15");
+        testRecipe.setAmtMilk("15");
+        testRecipe.setAmtSugar("15");
+        testRecipe.setAmtChocolate("16");
 
         // execute test method
         boolean result = inventoryCuT.useIngredients(testRecipe);
