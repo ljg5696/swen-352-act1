@@ -319,5 +319,18 @@ public class InventoryTest {
             , () -> assertEquals(15, inventoryCuT.getChocolate(), "chocolate should be 15")
         );
     }
+
+    @Test
+    @DisplayName("Test Case: toString() all ingredients 15")
+    void inventoryToString() {
+        // setup
+        String expected = "Coffee: 15\nMilk: 15\nSugar: 15\nChocolate: 15\n";
+        
+        // execute test method
+        String result = inventoryCuT.toString();
+
+        // validate the results
+        assertEquals(expected, result);
+    }
     
 }
