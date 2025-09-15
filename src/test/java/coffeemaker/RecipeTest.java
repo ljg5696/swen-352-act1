@@ -42,6 +42,18 @@ public class RecipeTest {
         assertEquals("Apple Pie recipe", result, "result should be Apple Pie recipe");
     }
 
+    @Test 
+    void setNullNameTest(){
+
+
+        String msg = "Name must not be null";
+
+       Exception exception = assertThrows(RecipeException.class,
+       () -> Pie.setName(null));
+
+       assertEquals(msg, exception.getMessage());
+    }
+
    
 
     @Test

@@ -44,6 +44,10 @@ public class Recipe {
     if (name != null) {
       this.name = name;
     }
+    else{
+
+      throw new RecipeException("Name must not be null");
+    }
   }
 
   /**
