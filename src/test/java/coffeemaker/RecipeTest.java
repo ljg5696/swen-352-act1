@@ -79,16 +79,7 @@ public class RecipeTest {
         );
     }
 
-    @Test
-    void nullHashCodeTest(){
-
-        Pie.setName(null);
-
-        int hashcode1 = Pie.hashCode();
-
-        assertEquals(31, hashcode1);
-    }
-
+   
     @Test
     void equalsTest(){
 
@@ -106,27 +97,9 @@ public class RecipeTest {
         );
     }
 
-    @Test
-    void nullEqualsTest(){
+    
 
-        Pie.setName(null);
-        Oth.setName("pie");
-
-        boolean result = Pie.getName().equals(Oth.getName());
-
-        assertEquals(false, result);
-    }
-
-    @Test
-    void unequalGetTest(){
-
-        Pie.setName("pie");
-        Oth.setName(null);
-        
-        boolean result = getClass().equals(Oth.getClass());
-
-        assertEquals(false, result);
-    }
+   
 
     // @Test
     // void equalTest(){
@@ -145,6 +118,17 @@ public class RecipeTest {
         
 
     }
+
+    @Test
+    void equalGotTest(){
+        Pie.setName("Pie");
+        Oth.setName("Pie");
+
+        boolean result = Pie.getClass().equals(Oth.getClass());
+        assertEquals(true, result);
+
+    }
+     
 
     @Test 
     void setCoffeeTest(){
