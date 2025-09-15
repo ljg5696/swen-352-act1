@@ -60,11 +60,16 @@ public class RecipeBook {
     //Assume the recipe doesn't exist in the array until find out otherwise
     boolean exists = false;
     //Check that recipe doesn't already exist in the array
-    for (int i = 0; i < recipeArray.length; i++) {
-      if (newRecipe.equals(recipeArray[i])) {
-        exists = true;
+    if (newRecipe != null){
+      for (int i = 0; i < recipeArray.length; i++) {
+        if (newRecipe.equals(recipeArray[i])) {
+          exists = true;
+        }
       }
+    }else {
+      return false;
     }
+    
     //Assume the recipe cannot be added until find an empty spot
     boolean added = false;
     //Check for the first empty spot in the array
@@ -89,11 +94,15 @@ public class RecipeBook {
    * @return the name of the old recipe or {@code null} if the delete operation failed
    */
   public String deleteRecipe(int recipeToDelete) {
-    if (recipeArray[recipeToDelete] != null) {
-      String recipeName = recipeArray[recipeToDelete].getName();
-      recipeArray[recipeToDelete] = new Recipe();
-      return recipeName;
-    } else {
+    try {
+      if (recipeArray[recipeToDelete] != null) {
+        String recipeName = recipeArray[recipeToDelete].getName();
+        recipeArray[recipeToDelete] = new Recipe();
+        return recipeName;
+      } else {
+        return null;
+      }
+    }catch (ArrayIndexOutOfBoundsException e) {
       return null;
     }
   }
@@ -109,14 +118,19 @@ public class RecipeBook {
    * @return the name of the old recipe or {@code null} if the replace operation failed
    */
   public String replaceRecipe(int recipeToReplace, Recipe newRecipe) {
-    if (recipeArray[recipeToReplace] != null) {
-      String recipeName = recipeArray[recipeToReplace].getName();
-      newRecipe.setName("");
-      recipeArray[recipeToReplace] = newRecipe;
-      return recipeName;
-    } else {
+    try{
+      if (recipeArray[recipeToReplace] != null) {
+        String recipeName = recipeArray[recipeToReplace].getName();
+        newRecipe.setName("");
+        recipeArray[recipeToReplace] = newRecipe;
+        return recipeName;
+      } else {
+        return null;
+      }
+    }catch (ArrayIndexOutOfBoundsException e) {
       return null;
     }
+    
   }
 
 }
